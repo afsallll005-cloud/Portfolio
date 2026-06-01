@@ -50,11 +50,11 @@ export const addproject = async (req, res) => {
     }
 
     const image = req.files["Image"]
-      ? req.files["Image"][0].filename
+      ? req.files["Image"][0].path
       : "";
 
     const moreImages = req.files["MoreImage"]
-      ? req.files["MoreImage"].map(file => file.filename)
+      ? req.files["MoreImage"].map(file => file.path)
       : [];
 
     // ✅ LIMIT MORE IMAGES (OPTIONAL)
@@ -150,12 +150,12 @@ export const updateProject = async (req, res) => {
     };
 
     if (req.files?.Image) {
-      updateData.Image = req.files.Image[0].filename;
+      updateData.Image = req.files.Image[0].path;
     }
 
     if (req.files?.MoreImage) {
       updateData.MoreImage = req.files.MoreImage.map(
-        (file) => file.filename
+        (file) => file.path
       );
     }
 
@@ -224,8 +224,8 @@ export const addAbout = async (req, res) => {
       ? techLanguages.split(",").map((item) => item.trim())
       : [];
 
-    const profilePhoto = req.files?.profilePhoto?.[0]?.filename;
-    const cv = req.files?.cv?.[0]?.filename;
+    const profilePhoto = req.files?.profilePhoto?.[0]?.path;
+    const cv = req.files?.cv?.[0]?.path;
 
     if (!summaryparaone || !summaryparatwo || !profilePhoto || !cv) {
       return res.status(400).json({

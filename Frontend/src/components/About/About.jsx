@@ -13,7 +13,7 @@ function About() {
 
   // FETCH DATA
   useEffect(() => {
-    axios.get("http://localhost:3800/addabout")
+    axios.get(`${import.meta.env.VITE_API_URL}/addabout`)
       .then((res) => {
         if (res.data.status) {
           setAbout(res.data.data);
@@ -94,7 +94,7 @@ const fadeRight = {
 
       {about?.cv && (
         <motion.a
-          href={`http://localhost:3800/images/${about.cv}`}
+          href={about.cv?.startsWith('http') ? about.cv : `${import.meta.env.VITE_API_URL}/images/${about.cv}`}
           target="_blank"
           rel="noopener noreferrer"
           variants={fadeUp}
@@ -137,7 +137,7 @@ const fadeRight = {
       <div className="about-right-imagearea">
         {about?.profilePhoto ? (
           <img
-            src={`http://localhost:3800/images/${about.profilePhoto}`}
+            src={about.profilePhoto?.startsWith('http') ? about.profilePhoto : `${import.meta.env.VITE_API_URL}/images/${about.profilePhoto}`}
             alt="profile"
           />
         ) : (

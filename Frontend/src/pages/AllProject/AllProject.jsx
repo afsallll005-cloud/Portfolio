@@ -11,7 +11,7 @@ function AllProject() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3800/ListProject") 
+      .get(`${import.meta.env.VITE_API_URL}/ListProject`) 
       .then((res) => {
         setProjects(res.data.data);
       })
@@ -72,7 +72,7 @@ function AllProject() {
               {/* IMAGE */}
               <div className="image-wrapper">
                 <img
-                  src={`http://localhost:3800/images/${item.Image}`}
+                  src={item.Image?.startsWith('http') ? item.Image : `${import.meta.env.VITE_API_URL}/images/${item.Image}`}
                   alt={item.ProjectName}
                   className="project-imgg"
                 />

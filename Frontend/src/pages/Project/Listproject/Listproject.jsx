@@ -9,7 +9,7 @@ function ListProject() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3800/ListProject")
+    axios.get(`${import.meta.env.VITE_API_URL}/ListProject`)
       .then((res) => {
         setProjects(res.data.data);
       })
@@ -21,7 +21,7 @@ function ListProject() {
   
   const deleteProject = async (id) => {
     try {
-      await axios.delete(`http://localhost:3800/deleteProject/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/deleteProject/${id}`);
       setProjects(projects.filter((item) => item._id !== id));
     } catch (err) {
       console.log(err);
@@ -49,7 +49,7 @@ function ListProject() {
 
               {/* MAIN IMAGE */}
               <img
-                src={`http://localhost:3800/images/${item.Image}`}
+                src={item.Image?.startsWith('http') ? item.Image : `${import.meta.env.VITE_API_URL}/images/${item.Image}`}
                 alt="project"
                 className="project-img"
               />
@@ -68,7 +68,7 @@ function ListProject() {
                   {item.MoreImage?.slice(0, 3).map((img, i) => (
                     <img
                       key={i}
-                      src={`http://localhost:3800/images/${img}`}
+                      src={img?.startsWith('http') ? img : `${import.meta.env.VITE_API_URL}/images/${img}`}
                       alt="more"
                     />
                   ))}

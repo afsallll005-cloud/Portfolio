@@ -6,6 +6,8 @@ import multer from "multer";
 dotenv.config()
 import fs from "fs";
 import path from "path";
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { addAbout, addproject, addService, deleteProject, getAbout, getEditProject, getListproject, getServices, getviewproject, updateProject } from './controller/controller.js';
 
 const corsOptions = {
@@ -18,23 +20,17 @@ const corsOptions = {
 const app = express();
 
 
-const uploadPath = path.join("public", "images");
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
-
-
-// auto create folder
-if (!fs.existsSync(uploadPath)) {
-    fs.mkdirSync(uploadPath, { recursive: true });
-}
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, uploadPath);
-    },
-    filename: function (req, file, cb) {
-        const uniqueName = Date.now() + "-" + file.originalname;
-        cb(null, uniqueName);
-    }
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'portfolio',
+  },
 });
 
 const upload = multer({ storage });
@@ -52,10 +48,11 @@ mongoose.connect(dburl).then(() => console.log("connection Successful"))
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-// app.use(express.static('public'))
-// app.use("/images", express.static("public/images"));
-app.use("/images", express.static(uploadPath));
+const uploadPath = path.join("public", "images");
 
+// Images are now served via Cloudinary (for new uploads)
+// But we keep this for backwards compatibility with old database records locally
+app.use("/images", express.static(uploadPath));
 
 
 
@@ -103,13 +100,13 @@ app.get("/getServices", getServices);
 
 
 
-const PORT = process.env.PORT;
-
-app.listen(PORT, () => {
-    console.log(
-        `app is listening on http://localhost:${PORT}/`
-    )
-})
+const PORT = process.env.PORT || 4000;
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`app is listening on http://localhost:${PORT}/`);
+    });
+}
+export default app;
 
 
 

@@ -10,7 +10,7 @@ function Projects() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3800/ListProject")
+      .get(`${import.meta.env.VITE_API_URL}/ListProject`)
       .then((res) => {
         // Latest projects first
         const latestProjects = [...res.data.data].reverse();
@@ -82,7 +82,7 @@ function Projects() {
 
             <div className="qxw-image-wrap">
               <img
-                src={`http://localhost:3800/images/${item.Image}`}
+                src={item.Image?.startsWith('http') ? item.Image : `${import.meta.env.VITE_API_URL}/images/${item.Image}`}
                 alt={item.ProjectName}
                 className="qxw-image"
               />

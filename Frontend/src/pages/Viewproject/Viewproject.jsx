@@ -20,7 +20,7 @@ function Viewproject() {
     /* ================= FETCH ================= */
     useEffect(() => {
         axios
-            .get(`http://localhost:3800/Viewproject/${id}`)
+            .get(`${import.meta.env.VITE_API_URL}/Viewproject/${id}`)
             .then((res) => setProject(res.data.data))
             .catch((err) => console.log(err));
     }, [id]);
@@ -39,7 +39,7 @@ function Viewproject() {
                 <div className="project__hero-media">
                     {project.Image && (
                         <img
-                            src={`http://localhost:3800/images/${project.Image}`}
+                            src={project.Image?.startsWith('http') ? project.Image : `${import.meta.env.VITE_API_URL}/images/${project.Image}`}
                             alt="Hero"
                         />
                     )}
@@ -106,7 +106,7 @@ function Viewproject() {
             {project.MoreImage?.length > 0 && (
                 <section className="project__media-full">
                     <img
-                        src={`http://localhost:3800/images/${project.MoreImage[0]}`}
+                        src={project.MoreImage[0]?.startsWith('http') ? project.MoreImage[0] : `${import.meta.env.VITE_API_URL}/images/${project.MoreImage[0]}`}
                         alt="Main"
                     />
                 </section>
@@ -118,7 +118,7 @@ function Viewproject() {
                     <img
                         key={i}
                         className="project__media-item"
-                        src={`http://localhost:3800/images/${img}`}
+                        src={img?.startsWith('http') ? img : `${import.meta.env.VITE_API_URL}/images/${img}`}
                         alt="Gallery"
                     />
                 ))}

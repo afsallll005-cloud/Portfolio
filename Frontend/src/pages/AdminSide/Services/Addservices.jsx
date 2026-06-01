@@ -24,7 +24,7 @@ function AddService() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3800/addService",
+        `${import.meta.env.VITE_API_URL}/addService`,
         formData
       );
 

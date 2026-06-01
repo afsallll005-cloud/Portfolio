@@ -22,7 +22,7 @@ function EditProject() {
   /* FETCH */
   useEffect(() => {
     axios
-      .get(`http://localhost:3800/editProject/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/editProject/${id}`)
       .then((res) => setProject(res.data.data))
       .catch((err) => console.log(err));
   }, [id]);
@@ -57,7 +57,7 @@ function EditProject() {
 
     try {
       await axios.put(
-        `http://localhost:3800/editProject/${id}`,
+        `${import.meta.env.VITE_API_URL}/editProject/${id}`,
         formData
       );
 
@@ -161,7 +161,7 @@ function EditProject() {
               <label>Current Main Image</label>
               {project.Image && (
                 <img
-                  src={`http://localhost:3800/images/${project.Image}`}
+                  src={project.Image?.startsWith('http') ? project.Image : `${import.meta.env.VITE_API_URL}/images/${project.Image}`}
                   className="edit-main-img-preview"
                   alt="main"
                 />
@@ -175,7 +175,7 @@ function EditProject() {
                 {project.MoreImage?.map((img, i) => (
                   <img
                     key={i}
-                    src={`http://localhost:3800/images/${img}`}
+                    src={img?.startsWith('http') ? img : `${import.meta.env.VITE_API_URL}/images/${img}`}
                     className="edit-thumb-img"
                     alt="gallery"
                   />

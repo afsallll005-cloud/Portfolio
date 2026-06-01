@@ -36,7 +36,7 @@ function Addabout() {
 
         try {
             const res = await axios.post(
-  "http://localhost:3800/addabout",
+  `${import.meta.env.VITE_API_URL}/addabout`,
   data,
   {
     headers: {

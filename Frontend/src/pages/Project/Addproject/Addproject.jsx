@@ -36,7 +36,7 @@ function AddProject() {
                     formData.append("MoreImage", file);
                 });
 
-                await axios.post("http://localhost:3800/addProject", formData);
+                await axios.post(`${import.meta.env.VITE_API_URL}/addProject`, formData);
 
                 alert("Project added successfully");
                 formik.resetForm();
