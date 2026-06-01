@@ -1,0 +1,92 @@
+.add-about-container {
+  max-width: 600px;
+  margin: 60px auto;
+  /* padding: 30px; */
+  background: #000000;
+  color: #ddd;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.add-about-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  font-size: 45px;
+}
+
+/* FORM */
+.about-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* TEXTAREA */
+.about-form textarea {
+  resize: none;
+  min-height: 120px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.about-form textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+/* INPUT */
+.about-form input[type="text"],
+.about-form input[type="file"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.about-form input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+/* LABEL */
+.about-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin-top: 5px;
+}
+
+/* BUTTON */
+.about-form button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.about-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .add-about-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}

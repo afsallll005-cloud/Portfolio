@@ -1,0 +1,123 @@
+.projects {
+  /* width: 80%; */
+   width: min(1200px, 80%);
+  margin: auto;
+}
+
+.projects-title {
+  text-align: center;
+  /* font-size: 80px; */
+   font-size: clamp(28px, 6vw, 80px);
+  font-weight: bold;
+  margin-bottom: 40px;
+  margin-top: 25px;
+}
+
+.projects-grid {
+  display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
+  gap: 40px;
+}
+
+/* CARD */
+.project-cardd {
+  width: 100%;
+  min-height: 550px;
+}
+
+.project-imgg {
+  /* height: 400px;
+  width: 100%;
+  object-fit: cover; */
+
+   width: 100%;
+  /* height: 100%; */
+  height: 370px;
+  object-fit: cover;
+}
+
+/* INFO */
+.project-infoo h2 {
+  padding-bottom: 10px;
+  padding-top: 8px;
+}
+
+.description {
+  margin-bottom: 10px;
+  /* width: 650px; */
+
+  width: 100%;
+  max-width: 500px;
+  height: 40px;
+  /* 🔹 fixed height to prevent layout shift */
+  overflow: hidden;
+  /* hides extra text */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* 🔹 show only 3 lines */
+  -webkit-box-orient: vertical;
+  /* text-align: justify; */
+}
+
+/* BUTTON */
+.viewProject {
+  background-color: black;
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.viewProject:hover {
+  background-color: white;
+  color: black;
+}
+
+/* 🔹 VIEW ALL BUTTON */
+.view-all-container {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.view-all-btn {
+  background-color: black;
+  color: white;
+  padding: 12px 22px;
+  border: 1px solid white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.view-all-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+
+
+
+
+
+@media (max-width: 600px) {
+
+  .project-imgg {
+    max-height: 220px;
+  }
+
+  .viewProject {
+    width: 100%;
+    padding: 12px;
+  }
+
+
+  .projects-grid {
+    grid-template-columns: repeat(1, 1fr);
+     gap: 0;
+}
+}

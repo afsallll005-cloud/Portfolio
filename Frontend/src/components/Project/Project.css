@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+/* ==========================================
+   SECTION
+========================================== */
+
+.qxw-showcase {
+  width: min(1400px, 92%);
+  margin: 30px auto;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* ==========================================
+   HEADING
+========================================== */
+
+.qxw-showHed {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 80px;
+  margin-bottom: 70px;
+}
+
+.qxw-title {
+  flex: 1;
+  font-size: 108px;
+  font-weight: 700;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.qxw-subtitle {
+  flex: 1;
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #9f9f9f;
+  margin-bottom: 10px;
+}
+
+/* ==========================================
+   GRID
+========================================== */
+
+.qxw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #3d3d3d;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.qxw-item {
+  padding: 18px;
+  border-right: 1px solid #3d3d3d;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.qxw-item:nth-child(2n) {
+  border-right: none;
+}
+
+/* ==========================================
+   TOP INFO
+========================================== */
+
+.qxw-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.qxw-top h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.qxw-image-wrap {
+  width: 100%;
+  height: 390px;
+  overflow: hidden;
+  background: #111;
+  border-radius: 2px;
+  position: relative;
+}
+
+.qxw-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.qxw-item:hover .qxw-image {
+  transform: scale(1.08);
+}
+
+/* ==========================================
+   OVERLAY
+========================================== */
+
+.qxw-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.4s ease;
+}
+
+.qxw-item:hover .qxw-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================
+   VIEW PROJECT BUTTON
+========================================== */
+
+.qxw-view-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+
+  padding: 14px 30px;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transform: translateY(25px);
+  transition: all 0.3s ease;
+}
+
+.qxw-item:hover .qxw-view-btn {
+  transform: translateY(0);
+}
+
+.qxw-view-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ==========================================
+   LOAD MORE
+========================================== */
+
+.qxw-load {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.qxw-load button {
+  min-width: 180px;
+  padding: 14px 35px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.qxw-load button:hover {
+  background: #fff;
+  color: #000;
+}
+.qxw-overlay-content {
+  text-align: center;
+  transform: translateY(30px);
+  transition: all 0.4s ease;
+}
+
+.qxw-item:hover .qxw-overlay-content {
+  transform: translateY(0);
+}
+
+.qxw-overlay-content h2 {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1024px) {
+  .qxw-showHed {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .qxw-title {
+    font-size: 80px;
+  }
+
+  .qxw-subtitle {
+    max-width: 100%;
+  }
+
+  .qxw-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .qxw-item:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+  .qxw-showHed {
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .qxw-title {
+    font-size: 56px;
+  }
+
+  .qxw-subtitle {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .qxw-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qxw-item {
+    border-right: none;
+  }
+
+  .qxw-image-wrap {
+    height: 250px;
+  }
+
+  .qxw-view-btn {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+}

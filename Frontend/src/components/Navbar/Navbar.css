@@ -1,0 +1,299 @@
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 8%;
+
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 135px;
+  height: auto;
+  display: block;
+}
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+
+  text-decoration: none;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+/* Underline Effect */
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+
+  width: 0;
+  height: 2px;
+
+  background: #ffffff;
+
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==========================
+   CONTACT BUTTON
+========================== */
+
+.contact-btn {
+  padding: 12px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: white;
+  color: black;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================
+   HAMBURGER
+========================== */
+
+.hamburger {
+  display: none;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 6px;
+
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+
+  background: white;
+  border-radius: 20px;
+
+  transition: all 0.3s ease;
+}
+
+/* Animation */
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ==========================
+   LAPTOP
+========================== */
+
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 18px 5%;
+  }
+
+  .nav-links {
+    gap: 30px;
+  }
+}
+
+/* ==========================
+   TABLET + MOBILE
+========================== */
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 16px 20px;
+    position: relative;
+  }
+
+  .contact-btn {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    background: rgba(10, 10, 10, 0.98);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-20px);
+
+    transition: all 0.35s ease;
+  }
+
+  .nav.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 35px 0;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 18px;
+  }
+
+  .logo img {
+    width: 115px;
+  }
+
+  .nav-links {
+    gap: 25px;
+  }
+
+  .nav-links a {
+    font-size: 17px;
+  }
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 14px 15px;
+      position: sticky;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  .hamburger span {
+    width: 25px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+
+  .nav-links {
+    padding: 30px 0;
+  }
+}
