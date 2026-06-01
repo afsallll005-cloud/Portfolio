@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import "./Editproject.css";
+import "./EditProject.css";
 
 function EditProject() {
   const { id } = useParams();
